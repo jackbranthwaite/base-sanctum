@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'home' => env('SPA_URL') . '/launch-page',
+    'home' => env('SPA_URL') . '/login',
 
 
     /*
