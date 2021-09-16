@@ -16,18 +16,17 @@ class CreateUsersTeachersTable extends Migration
         Schema::create('users_teachers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->string('teacher_registration_number')->nullable()->unique();
             $table->string('teacher_phone');
             $table->string('teacher_role');
             $table->string('teacher_role_other')->nullable();
             $table->string('teacher_country');
-        });
 
-        Schema::table('users_teachers', function ($table) {
             $table->foreign('user_id')
                 ->references('id')->on('users')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->unique();
         });
     }
 

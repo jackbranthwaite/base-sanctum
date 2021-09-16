@@ -20,11 +20,14 @@ class CreateUsersStudentsTable extends Migration
             $table->enum('gender', ['male', 'female', 'not-specified']);
             $table->string('phone')->nullable();
             $table->string('ethnicity_other');
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('comapny_id')->nullable()->constrained();
-            $table->foreignId('classroom_id')->nullable()->constrained();
+            $table->unsignedBigInteger('user_id')->unique();
 
-            $table->uuid('uuid')->nullable();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->unique();
+
+
             $table->softDeletes();
         });
     }
