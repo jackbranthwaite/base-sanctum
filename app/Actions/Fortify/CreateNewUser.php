@@ -3,6 +3,8 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\UsersStudent;
+use App\Models\UsersTeacher;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -34,12 +36,39 @@ class CreateNewUser implements CreatesNewUsers
             'role' => ['required', 'string', 'max:255']
         ])->validate();
 
-        return User::create([
+
+
+        $user =  User::create([
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'role' => $input['role']
+
         ]);
+
+        if ($input['role'] === '1') {
+            $user_teacher = new UsersTeacher(
+                [
+                    'teacher_role' => $input['teacher_role'],
+                    'teacher_phone' => $input['teacher_phone'],
+                    'teacher_country' => $input['teacher_country'],
+                ]
+            );
+            $user->teacher()->save($user_teacher);
+        }
+        if ($input['role'] === '0') {
+            $user_student = new UsersStudent(
+                [
+                    'nsn' => $input['nsn'],
+                    'gender' => $input['gender'],
+                    'phone' => $input['phone'],
+                    'ethnicity' => $input['ethnicity'],
+                ]
+            );
+            $user->student()->save($user_student);
+        }
+
+        return $user;
     }
 }
