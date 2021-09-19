@@ -63,7 +63,7 @@ class CreateNewUser implements CreatesNewUsers
                     'nsn' => $input['nsn'],
                     'gender' => $input['gender'],
                     'phone' => $input['phone'],
-                    'ethnicity' => $input['ethnicity'],
+                    'ethnicity_other' => $input['ethnicity_other'],
                 ]
             );
             $user->student()->save($user_student);

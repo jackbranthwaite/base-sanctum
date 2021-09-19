@@ -26,9 +26,6 @@ class CreateUsersStudentsTable extends Migration
                 ->references('id')->on('users')
                 ->onDelete('cascade')
                 ->unique();
-
-
-            $table->softDeletes();
         });
     }
 
