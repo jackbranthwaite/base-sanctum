@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Password;
 
@@ -23,8 +24,7 @@ use Illuminate\Support\Facades\Password;
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/products/search/{name}', [ProductController::class, 'search']);
-Route::get('/teachers', [UserController::class, 'searchTeachers']);
-Route::get('/students', [UserController::class, 'searchStudents']);
+Route::post('/School', [SchoolController::class, 'store']);
 // Route::post('/register', [AuthController::class, 'register']);
 // Route::post('/login', [AuthController::class, 'login']);
 
@@ -36,7 +36,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/products', [ProductController::class, 'store']);
     Route::put('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
-
+    Route::get('/teachers', [UserController::class, 'searchTeachers']);
+    Route::get('/students', [UserController::class, 'searchStudents']);
     // Route::post('logout', [AuthController::class, 'logout']);
 });
 

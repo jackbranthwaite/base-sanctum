@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Schools extends Model
+class School extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -16,4 +16,9 @@ class Schools extends Model
         'contact_email',
         'contact_phone'
     ];
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Schools;
+use App\Models\School;
 
 class SchoolController extends Controller
 {
@@ -14,7 +14,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        return  Schools::all();
+        return  School::all();
     }
 
     /**
@@ -27,11 +27,14 @@ class SchoolController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'slug' => 'required',
-            'price' => 'required'
+            'country' => 'required',
+            'region' => 'required',
+            'contact_email' => 'required',
+            'contact_name' => 'required',
+            'contact_phone' => 'required',
         ]);
 
-        return Schools::create($request->all());
+        return School::create($request->all());
     }
 
     /**
@@ -42,7 +45,7 @@ class SchoolController extends Controller
      */
     public function show($id)
     {
-        return Schools::find($id);
+        return School::find($id);
     }
 
     /**
@@ -54,7 +57,7 @@ class SchoolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Schools::find($id);
+        $product = School::find($id);
         $product->update($request->all());
         return $product;
     }
@@ -67,7 +70,7 @@ class SchoolController extends Controller
      */
     public function destroy($id)
     {
-        return Schools::destroy(($id));
+        return School::destroy(($id));
     }
 
     /**
@@ -76,8 +79,8 @@ class SchoolController extends Controller
      * @param  str  $name
      * @return \Illuminate\Http\Response
      */
-    public function search($name)
-    {
-        return Schools::where('name', 'like', '%' . $name . '%')->get();
-    }
+    // public function search($name)
+    // {
+    //     return School::where('name', 'like', '%' . $name . '%')->get();
+    // }
 }
