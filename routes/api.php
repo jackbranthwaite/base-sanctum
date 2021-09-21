@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Password;
 
@@ -20,11 +21,12 @@ use Illuminate\Support\Facades\Password;
 */
 
 // Public Routes
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{id}', [ProductController::class, 'show']);
-Route::get('/products/search/{name}', [ProductController::class, 'search']);
-Route::get('/teachers', [UserController::class, 'searchTeachers']);
-Route::get('/students', [UserController::class, 'searchStudents']);
+Route::get('/schools', [SchoolController::class, 'index']);
+Route::get('/schools/{id}', [SchoolController::class, 'show']);
+Route::get('/schools/search/{name}', [SchoolController::class, 'search']);
+Route::post('/schools', [SchoolController::class, 'store']);
+Route::put('/schools/{id}', [SchoolController::class, 'update']);
+Route::delete('/schools/{id}', [SchoolController::class, 'destroy']);
 // Route::post('/register', [AuthController::class, 'register']);
 // Route::post('/login', [AuthController::class, 'login']);
 
@@ -33,10 +35,9 @@ Route::get('/students', [UserController::class, 'searchStudents']);
 
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/products', [ProductController::class, 'store']);
-    Route::put('/products/{id}', [ProductController::class, 'update']);
-    Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
+    Route::get('/teachers', [UserController::class, 'searchTeachers']);
+    Route::get('/students', [UserController::class, 'searchStudents']);
     // Route::post('logout', [AuthController::class, 'logout']);
 });
 
