@@ -8,17 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class School extends Model
 {
     use HasFactory;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
-        'country',
         'region',
-        'contact_name',
-        'contact_email',
-        'contact_phone'
-    ];
+        'country',
 
-    public function user()
-    {
-        return $this->hasMany(User::class);
-    }
+    ];
 }
