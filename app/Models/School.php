@@ -8,10 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class School extends Model
 {
     use HasFactory;
+
+    protected $table = 'schools';
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'name',
         'city',
         'region',
         'country'
     ];
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
 }
