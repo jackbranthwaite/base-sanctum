@@ -22,4 +22,12 @@ class UsersTeacher extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function students()
+    {
+        return $this->hasMany(UsersStudent::class);
+    }
+    public function classes()
+    {
+        return $this->hasMany(ClassModel::class);
+    }
 }

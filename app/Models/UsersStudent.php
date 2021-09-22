@@ -20,4 +20,12 @@ class UsersStudent extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function classes()
+    {
+        return $this->hasOne(ClassModel::class);
+    }
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
 }
