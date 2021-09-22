@@ -15,7 +15,9 @@ class Company extends Model
      */
     protected $fillable = [
         'name',
-        'year_level',
+        'company_type',
+        'description',
+        'teacher_id'
 
 
     ];

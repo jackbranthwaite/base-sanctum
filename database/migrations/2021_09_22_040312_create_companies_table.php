@@ -20,9 +20,6 @@ class CreateCompaniesTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('company_type');
-            $table->unsignedBigInteger('teacher_id');
-
-            $table->foreign('teacher_id')->references('user_id')->on('teachers');
         });
     }
 

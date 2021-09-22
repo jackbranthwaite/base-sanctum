@@ -27,7 +27,8 @@ class ClassController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'year_level' => 'required'
+            'year_level' => 'required',
+            'teacher_id' => 'required'
 
         ]);
 

@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ClassModel extends Model
 {
     use HasFactory;
+
+    protected $table = 'classes';
+
+    protected $primaryKey = 'id';
     /**
      * The attributes that are mass assignable.
      *
@@ -16,7 +20,7 @@ class ClassModel extends Model
     protected $fillable = [
         'name',
         'year_level',
-
+        'teacher_id',
 
     ];
 

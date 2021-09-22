@@ -18,9 +18,6 @@ class CreateClassesTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('year_level');
-            $table->unsignedBigInteger('school_id');
-
-            $table->foreign('school_id')->references('id')->on('schools')->onDelete('set null');
         });
     }
 

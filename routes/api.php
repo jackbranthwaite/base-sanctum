@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClassController;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewPasswordController;
@@ -21,17 +23,22 @@ use Illuminate\Support\Facades\Password;
 */
 
 // Public Routes
+
+//School Routes
 Route::get('/schools', [SchoolController::class, 'index']);
 Route::get('/schools/{id}', [SchoolController::class, 'show']);
 Route::get('/schools/search/{name}', [SchoolController::class, 'search']);
 Route::post('/schools', [SchoolController::class, 'store']);
 Route::put('/schools/{id}', [SchoolController::class, 'update']);
 Route::delete('/schools/{id}', [SchoolController::class, 'destroy']);
-// Route::post('/register', [AuthController::class, 'register']);
-// Route::post('/login', [AuthController::class, 'login']);
 
+//Class Routes
+Route::get('/classes', [ClassController::class, 'index']);
+Route::post('/classes', [ClassController::class, 'store']);
 
-
+//Company Routes
+Route::get('/companies', [CompanyController::class, 'index']);
+Route::post('/companies', [CompanyController::class, 'store']);
 
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {

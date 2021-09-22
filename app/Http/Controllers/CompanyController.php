@@ -28,7 +28,8 @@ class CompanyController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'company_type' => 'required'
+            'company_type' => 'required',
+            'teacher_id' => 'required'
 
         ]);
 
