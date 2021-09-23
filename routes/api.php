@@ -28,13 +28,11 @@ use Illuminate\Support\Facades\Password;
 Route::get('/schools', [SchoolController::class, 'index']);
 Route::get('/schools/{id}', [SchoolController::class, 'show']);
 Route::get('/schools/search/{name}', [SchoolController::class, 'search']);
-Route::post('/schools', [SchoolController::class, 'store']);
-Route::put('/schools/{id}', [SchoolController::class, 'update']);
-Route::delete('/schools/{id}', [SchoolController::class, 'destroy']);
+
 
 //Class Routes
 Route::get('/classes', [ClassController::class, 'index']);
-Route::post('/classes', [ClassController::class, 'store']);
+
 
 //Company Routes
 Route::get('/companies', [CompanyController::class, 'index']);
@@ -42,7 +40,10 @@ Route::post('/companies', [CompanyController::class, 'store']);
 
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-
+    Route::post('/classes', [ClassController::class, 'store']);
+    Route::post('/schools', [SchoolController::class, 'store']);
+    Route::put('/schools/{id}', [SchoolController::class, 'update']);
+    Route::delete('/schools/{id}', [SchoolController::class, 'destroy']);
     Route::get('/teachers', [UserController::class, 'searchTeachers']);
     Route::get('/students', [UserController::class, 'searchStudents']);
     // Route::post('logout', [AuthController::class, 'logout']);
