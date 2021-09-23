@@ -72,14 +72,14 @@ class CompanyController extends Controller
         return Company::destroy(($id));
     }
 
-    // /**
-    //  * Search for a name
-    //  *
-    //  * @param  str  $name
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function search($name)
-    // {
-    //     return School::where('name', 'like', '%' . $name . '%')->get();
-    // }
+    /**
+     * Search for a name
+     *
+     * @param  str  $name
+     * @return \Illuminate\Http\Response
+     */
+    public function search($teacher_id)
+    {
+        return Company::where('teacher_id',  $teacher_id)->get();
+    }
 }
