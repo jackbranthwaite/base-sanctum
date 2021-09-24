@@ -37,11 +37,12 @@ Route::get('/classes', [ClassController::class, 'index']);
 //Company Routes
 Route::get('/companies', [CompanyController::class, 'index']);
 Route::post('/companies', [CompanyController::class, 'store']);
-Route::get('/companies/{id}', [CompanyController::class, 'show']);
+
 Route::get('/companies/search/{teacher_id}', [CompanyController::class, 'search']);
 
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/companies/{id}', [CompanyController::class, 'show']);
     Route::post('/classes', [ClassController::class, 'store']);
     Route::post('/schools', [SchoolController::class, 'store']);
     Route::put('/schools/{id}', [SchoolController::class, 'update']);
