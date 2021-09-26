@@ -71,14 +71,14 @@ class ClassController extends Controller
         return ClassModel::destroy(($id));
     }
 
-    // /**
-    //  * Search for a name
-    //  *
-    //  * @param  str  $name
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function search($name)
-    // {
-    //     return School::where('name', 'like', '%' . $name . '%')->get();
-    // }
+    /**
+     * Search for a teacher id
+     *
+     * @param  str  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search($id)
+    {
+        return ClassModel::where('teacher_id', $id)->get();
+    }
 }
