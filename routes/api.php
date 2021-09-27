@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Password;
 
@@ -27,6 +28,7 @@ Route::get('/classes', [ClassController::class, 'index']);
 Route::get('/companies', [CompanyController::class, 'index']);
 Route::post('/companies', [CompanyController::class, 'store']);
 
+Route::get('/students/search/{id}', [StudentController::class, 'searchByClass']);
 
 
 // Protected Routes

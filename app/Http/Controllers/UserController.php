@@ -22,4 +22,9 @@ class UserController extends Controller
     {
         return User::where('role', '0')->get(['first_name', 'last_name']);
     }
+
+    public function searchByClass($id)
+    {
+        return User::where('class_id', $id);
+    }
 }
